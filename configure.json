@@ -1,5 +1,6 @@
 {
     "repositories_json_file": "./repositories.json",
     "repositories_dir": "./repositories",
-    "difference_dir": "./difference"
+    "difference_dir": "./difference",
+    "loop_range": 24
 }

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <thread>
+#include <chrono>
 
 #include "git.hpp"
 #include "path.hpp"
@@ -40,9 +42,8 @@ bool Controller::initialize()
 
 void Controller::run()
 {
-    process();
-
-    return;
+    while(process())
+        std::this_thread::sleep_for(std::chrono::hours(Configure::loopRange()));
 }
 
 bool Controller::process()
@@ -93,7 +94,13 @@ bool Controller::process()
 bool Controller::loadFromJson()
 {
     if(!Configure::reloadRepositories())
-        return false;
+    {
+        std::cerr << "loadFromJson warning:\n"
+            "    what: failed to load json file.\n"
+            "    approach: use previous value.\n"
+            << std::flush;
+        return true;
+    }
 
     std::unordered_map<std::string, GIT::Repository*> newReps;
     for(auto &&p : Configure::repositoriesMap())

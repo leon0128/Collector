@@ -14,9 +14,11 @@ private:
     inline static const std::string REPOSITORIES_JSON_FILE_KEY = "repositories_json_file";
     inline static const std::string REPOSITORIES_DIR_KEY = "repositories_dir";
     inline static const std::string DIFFERENCE_DIR_KEY = "difference_dir";
+    inline static const std::string LOOP_RANGE_KEY = "loop_range";
     inline static std::filesystem::path REPOSITORIES_JSON_FILE = "./repositories.json";
     inline static std::filesystem::path REPOSITORIES_DIR = "./repositories";
     inline static std::filesystem::path DIFFERENCE_DIR = "./difference";
+    inline static int LOOP_RANGE = 24;
 
     inline static const std::string REPOSITORIES_KEY = "repositories";
     inline static const std::string REPOSITORIES_NAME_KEY = "name";
@@ -37,6 +39,8 @@ public:
         {return DIFFERENCE_DIR;}
     static const std::unordered_map<std::string, std::string> repositoriesMap() noexcept
         {return REPOSITORIES_MAP;};
+    static int loopRange() noexcept
+        {return LOOP_RANGE;}
 
 private:
     static bool loadConfigure();

@@ -3,11 +3,7 @@
     [
         {
             "name": "test",
-            "url": "https://github.com/leon0128/testrep.git"
-        },
-        {
-            "name": "genprog",
-            "url": "https://github.com/squaresLab/genprog-code.git"
+            "url": "https://github.com/leon0128/CCompiler_v7.git"
         }
     ]
 }

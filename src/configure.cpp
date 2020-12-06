@@ -61,6 +61,11 @@ bool Configure::loadConfigure()
         DIFFERENCE_DIR = opt.get();
     else
         isSuccessful = false;
+    
+    if(auto opt = tree.get_optional<int>(LOOP_RANGE_KEY); opt)
+        LOOP_RANGE = opt.get();
+    else
+        isSuccessful = false;
 
     if(!isSuccessful)
     {
