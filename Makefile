@@ -1,5 +1,5 @@
 CXX = g++-9 
-CXXFLAGS = -w
+CXXFLAGS = -std=c++17 -w -g3
 PROGRAM = collector
 DIR = src
 OBJS = $(patsubst %.cpp, %.o, $(wildcard $(DIR)/*.cpp))
