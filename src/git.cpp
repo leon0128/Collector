@@ -18,10 +18,12 @@ bool Repository::clone() const
 
     std::string cmd = SYSTEM::command("git"
         , "clone"
+        , "--quiet"
         , url()
         , path().string()
         , ">"
-        , "/dev/null");
+        , "/dev/null"
+        , "2>&1");
     if(SYSTEM::system(cmd) == 0)
         return true;
     else
@@ -34,9 +36,11 @@ bool Repository::pull() const
         , "-C"
         , path().string()
         , "pull"
+        , "--quiet"
         , "--all"
         , ">"
-        , "/dev/null"));
+        , "/dev/null"
+        , "2>&1"));
     if(SYSTEM::system(cmd) == 0)
         return true;
     else
@@ -53,7 +57,10 @@ bool Repository::log(const std::filesystem::path &logpath) const
         , path().string()
         , "log"
         , "--pretty=format:\"%H\n%s\""
-        , "--output=" + logpath.string()));
+        , "--output=" + logpath.string()
+        , ">"
+        , "/dev/null"
+        , "2>&1"));
     if(SYSTEM::system(cmd) == 0)
         return true;
     else
@@ -118,7 +125,10 @@ bool Repository::show(const std::filesystem::path &output
         , "--ignore-blank-lines"
         , "--ignore-space-change"
         , "--output=" + output.string()
-        , hash));
+        , hash
+        , ">"
+        , "/dev/null"
+        , "2>&1"));
 
     if(SYSTEM::system(cmd) == 0)
         return true;
@@ -176,7 +186,6 @@ bool Repository::parseShow(const std::filesystem::path &showpath
 
         fp = PATH::getLine(str, line, fp);
         filenode.put("dst", line.substr(4));
-
 
         boost::property_tree::ptree hunknode;
         for(std::string::size_type hp = str.find("\n@@", fp - 1); hp != std::string::npos; hp = str.find("\n@@", hp - 1))

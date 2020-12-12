@@ -42,8 +42,9 @@ bool Controller::initialize()
 
 void Controller::run()
 {
-    while(process())
-        std::this_thread::sleep_for(std::chrono::hours(Configure::loopRange()));
+    // while(process())
+    //     std::this_thread::sleep_for(std::chrono::hours(Configure::loopRange()));
+    process();
 }
 
 bool Controller::process()

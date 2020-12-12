@@ -2,8 +2,32 @@
     "repositories":
     [
         {
-            "name": "test",
-            "url": "https://github.com/leon0128/CCompiler_v7.git"
+            "name": "wled",
+            "url": "https://github.com/Aircoookie/WLED.git"
+        },
+        {
+            "name": "googletest",
+            "url": "https://github.com/google/googletest.git"
+        },
+        {
+            "name": "bitcoin",
+            "url": "https://github.com/bitcoin/bitcoin.git"
+        },
+        {
+            "name": "clickhouse",
+            "url": "https://github.com/ClickHouse/ClickHouse.git"
+        },
+        {
+            "name": "prusaslicer",
+            "url": "https://github.com/prusa3d/PrusaSlicer.git"
+        },
+        {
+            "name": "fastled",
+            "url": "https://github.com/FastLED/FastLED.git"
+        },
+        {
+            "name": "tensorflow",
+            "url": "https://github.com/tensorflow/tensorflow.git"
         }
     ]
 }
