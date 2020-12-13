@@ -187,8 +187,9 @@ bool Repository::parseShow(const std::filesystem::path &showpath
         fp = PATH::getLine(str, line, fp);
         filenode.put("dst", line.substr(4));
 
+        std::string::size_type nextfp = str.find("\n---", fp - 1);
         boost::property_tree::ptree hunknode;
-        for(std::string::size_type hp = str.find("\n@@", fp - 1); hp != std::string::npos; hp = str.find("\n@@", hp - 1))
+        for(std::string::size_type hp = str.find("\n@@", fp - 1); hp != std::string::npos || hp > nextfp; hp = str.find("\n@@", hp - 1))
         {
             hp++;
             boost::property_tree::ptree hunktree;
